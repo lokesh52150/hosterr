@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoster — Premium Web Hosting, Beautifully Simple</title>
+<meta name="description" content="Hoster is premium web hosting made beautifully simple. Blazing-fast SSD servers, free domain & SSL, 24/7 expert support and a 30-day money-back guarantee.">
+<meta name="theme-color" content="#6c3ce9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%235b2fe0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M18 20h7v9h14v-9h7v24h-7V35H25v9h-7z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --purple:#6c3ce9;
+  --purple-500:#7c4ff0;
+  --purple-700:#5626d4;
+  --purple-200:#d7c9fb;
+  --purple-050:#f4f0ff;
+  --purple-glow:rgba(108,60,233,.35);
+  --ink:#16121f;
+  --ink-2:#2c2540;
+  --body:#5b5670;
+  --muted:#8b869e;
+  --line:#ece9f6;
+  --bg:#ffffff;
+  --bg-soft:#faf9ff;
+  --green:#12b76a;
+  --green-soft:#e7f8f0;
+  --amber:#f59e0b;
+  --red:#ef4444;
+  --radius:16px;
+  --radius-lg:22px;
+  --shadow-sm:0 2px 8px rgba(22,18,31,.05);
+  --shadow-md:0 12px 30px rgba(22,18,31,.08);
+  --shadow-lg:0 30px 60px rgba(86,38,212,.16);
+  --grad:linear-gradient(135deg,#8b5cf6 0%,#6c3ce9 55%,#5626d4 100%);
+  --font-head:"Plus Jakarta Sans",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --container:1160px;
+  --nav-h:74px;
+  --ease:cubic-bezier(.22,.68,.35,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--body);
+  background:var(--bg);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--font-head);color:var(--ink);line-height:1.18;font-weight:800;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,select{font:inherit;color:inherit}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
+.section{padding:110px 0}
+.section--soft{background:var(--bg-soft)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-head);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--purple);background:var(--purple-050);
+  border:1px solid var(--purple-200);
+  padding:7px 16px;border-radius:100px;margin-bottom:20px;
+}
+.section-head{text-align:center;max-width:660px;margin:0 auto 60px}
+.section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:16px}
+.section-head p{font-size:1.06rem}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--font-head);font-weight:700;font-size:.95rem;
+  padding:13px 26px;border-radius:12px;border:1px solid transparent;
+  cursor:pointer;transition:all .28s var(--ease);white-space:nowrap;
+}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 24px var(--purple-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(108,60,233,.42)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{border-color:var(--purple-200);color:var(--purple);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--purple-700)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-outline-light:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-lg{padding:16px 32px;font-size:1rem;border-radius:14px}
+
+/* ============ HEADER ============ */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:100%;z-index:200;
+  background:var(--grad);transform:scaleX(0);transform-origin:0 50%;
+}
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:150;height:var(--nav-h);
+  display:flex;align-items:center;
+  background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:all .3s var(--ease);
+}
+.header.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(22,18,31,.05)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--font-head);font-weight:800;font-size:1.35rem;color:var(--ink);letter-spacing:-.03em}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;background:var(--grad);
+  display:grid;place-items:center;box-shadow:0 6px 16px var(--purple-glow);flex-shrink:0;
+}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{
+  font-family:var(--font-head);font-weight:600;font-size:.93rem;color:var(--ink-2);
+  position:relative;padding:6px 0;transition:color .25s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;
+  background:var(--grad);border-radius:2px;transform:scaleX(0);transform-origin:right;
+  transition:transform .3s var(--ease);
+}
+.nav-links a:hover{color:var(--purple)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-actions .btn{padding:10px 20px}
+.burger{
+  display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;
+  border-radius:11px;cursor:pointer;position:relative;
+}
+.burger span{
+  position:absolute;left:12px;width:20px;height:2px;background:var(--ink);border-radius:2px;
+  transition:all .3s var(--ease);
+}
+.burger span:nth-child(1){top:15px}
+.burger span:nth-child(2){top:21px}
+.burger span:nth-child(3){top:27px}
+body.menu-open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){top:21px;transform:rotate(-45deg)}
+.mobile-menu{
+  position:fixed;inset:var(--nav-h) 0 0;z-index:140;background:#fff;
+  padding:28px 24px 40px;display:flex;flex-direction:column;gap:6px;
+  transform:translateY(-12px);opacity:0;pointer-events:none;transition:all .3s var(--ease);
+  overflow-y:auto;
+}
+body.menu-open .mobile-menu{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-menu a{
+  font-family:var(--font-head);font-weight:700;font-size:1.15rem;color:var(--ink);
+  padding:15px 4px;border-bottom:1px solid var(--line);
+}
+.mobile-menu .btn{margin-top:18px}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:calc(var(--nav-h) + 84px) 0 100px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(900px 480px at 82% -10%,rgba(139,92,246,.16),transparent 60%),
+  radial-gradient(700px 420px at 8% 12%,rgba(108,60,233,.10),transparent 60%),
+  linear-gradient(#fff,#fbfaff);
+}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(2.35rem,4.6vw,3.65rem);margin-bottom:22px}
+.hero-sub{font-size:1.13rem;max-width:520px;margin-bottom:32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:10px 22px;list-style:none}
+.hero-trust li{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:500;color:var(--ink-2)}
+.hero-trust svg{flex-shrink:0}
+
+/* Domain search */
+.domain-search{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow-md);padding:9px;max-width:560px;
+}
+.domain-row{display:flex;gap:8px}
+.domain-input{
+  flex:1;min-width:0;border:none;outline:none;background:transparent;
+  padding:12px 16px;font-size:1rem;color:var(--ink);
+}
+.domain-input::placeholder{color:var(--muted)}
+.domain-row .btn{flex-shrink:0}
+.domain-results{margin-top:8px;display:none}
+.domain-results.open{display:block}
+.domain-result{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 16px;border-radius:12px;font-size:.93rem;
+  animation:fadeUp .4s var(--ease) both;
+}
+.domain-result:nth-child(1){animation-delay:.05s}
+.domain-result:nth-child(2){animation-delay:.12s}
+.domain-result:nth-child(3){animation-delay:.19s}
+.domain-result:nth-child(4){animation-delay:.26s}
+.domain-result:nth-child(1){animation-delay:.05s}
+.domain-result.available{background:var(--green-soft)}
+.domain-result.taken{background:#fef2f2}
+.domain-name{font-family:var(--font-head);font-weight:700;color:var(--ink)}
+.domain-status{display:flex;align-items:center;gap:14px;font-size:.86rem}
+.badge-avail,.badge-taken{
+  font-family:var(--font-head);font-weight:700;font-size:.74rem;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;
+}
+.badge-avail{background:#d5f2e4;color:#0a7a46}
+.badge-taken{background:#fde0e0;color:#b91c1c}
+.domain-price{font-family:var(--font-head);font-weight:800;color:var(--purple)}
+.domain-checking{padding:14px 16px;font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:10px}
+.spinner{
+  width:16px;height:16px;border:2px solid var(--purple-200);border-top-color:var(--purple);
+  border-radius:50%;animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Hero visual */
+.hero-visual{position:relative}
+.dash-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);padding:24px;position:relative;z-index:2;
+}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.dash-dots{display:flex;gap:6px}
+.dash-dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dash-dots i:first-child{background:#ffb4b4}
+.dash-dots i:nth-child(2){background:#ffe0a3}
+.dash-dots i:nth-child(3){background:#b8f0d1}
+.dash-label{font-size:.78rem;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.dash-metric{margin-bottom:20px}
+.dash-metric-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.dash-metric-head strong{font-family:var(--font-head);color:var(--ink);font-size:1rem}
+.dash-metric-head span{font-size:.8rem;color:var(--green);font-weight:600}
+.bar{height:9px;background:var(--purple-050);border-radius:100px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grad);border-radius:100px;width:0;transition:width 1.4s var(--ease)}
+.dash-chart{display:flex;align-items:flex-end;gap:7px;height:92px;padding-top:8px}
+.dash-chart i{
+  flex:1;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,#b79af8,#6c3ce9);
+  height:12%;transition:height 1s var(--ease);
+}
+.dash-live{
+  display:flex;align-items:center;gap:8px;margin-top:18px;padding-top:16px;
+  border-top:1px dashed var(--line);font-size:.83rem;color:var(--muted);
+}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(18,183,106,.5)}70%{box-shadow:0 0 0 9px rgba(18,183,106,0)}100%{box-shadow:0 0 0 0 rgba(18,183,106,0)}}
+.float-chip{
+  position:absolute;z-index:3;background:#fff;border:1px solid var(--line);
+  border-radius:14px;box-shadow:var(--shadow-md);padding:12px 16px;
+  font-family:var(--font-head);font-weight:700;font-size:.85rem;color:var(--ink);
+  display:flex;align-items:center;gap:9px;animation:float 5s ease-in-out infinite;
+}
+.float-chip small{display:block;font-family:var(--font-body);font-weight:500;font-size:.72rem;color:var(--muted)}
+.chip-1{top:-22px;left:-30px}
+.chip-2{bottom:36px;right:-34px;animation-delay:1.4s}
+.blob{
+  position:absolute;width:340px;height:340px;border-radius:50%;z-index:1;filter:blur(60px);opacity:.5;
+  background:radial-gradient(circle,#b79af8,transparent 70%);
+  top:5%;right:-12%;animation:float 7s ease-in-out infinite;
+}
+.blob-2{
+  position:absolute;width:260px;height:260px;border-radius:50%;z-index:1;filter:blur(55px);opacity:.4;
+  background:radial-gradient(circle,#6c3ce9,transparent 70%);
+  bottom:-6%;left:-10%;animation:float 8s ease-in-out infinite reverse;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* ============ LOGOS ============ */
+.logos{padding:38px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.logos-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px 52px}
+.logos-row span{
+  font-family:var(--font-head);font-weight:700;font-size:1.08rem;color:#b6b1c7;
+  letter-spacing:.02em;transition:color .3s;
+}
+.logos-row span:hover{color:var(--purple)}
+
+/* ============ STATS ============ */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat strong{
+  display:block;font-family:var(--font-head);font-size:clamp(1.9rem,3.4vw,2.6rem);
+  font-weight:800;color:var(--ink);letter-spacing:-.03em;margin-bottom:4px;
+}
+.stat span{font-size:.92rem;color:var(--muted);font-weight:500}
+
+/* ============ FEATURES ============ */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:32px 28px;transition:all .35s var(--ease);position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s;
+  background:radial-gradient(420px 200px at 50% -20%,rgba(139,92,246,.10),transparent 70%);
+}
+.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--purple-200)}
+.feature-card:hover::before{opacity:1}
+.feature-icon{
+  width:52px;height:52px;border-radius:14px;background:var(--purple-050);
+  border:1px solid var(--purple-200);display:grid;place-items:center;margin-bottom:20px;
+  transition:all .35s var(--ease);
+}
+.feature-card:hover .feature-icon{background:var(--grad);border-color:transparent;transform:rotate(-6deg) scale(1.06)}
+.feature-card:hover .feature-icon svg path,
+.feature-card:hover .feature-icon svg circle,
+.feature-card:hover .feature-icon svg rect,
+.feature-card:hover .feature-icon svg line{stroke:#fff}
+.feature-card h3{font-size:1.15rem;margin-bottom:10px}
+.feature-card p{font-size:.94rem}
+
+/* ============ PRICING ============ */
+.billing-toggle{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:50px;flex-wrap:wrap;
+}
+.billing-toggle span{font-family:var(--font-head);font-weight:600;font-size:.95rem;color:var(--muted);transition:color .25s}
+.billing-toggle span.active{color:var(--ink)}
+.switch{
+  width:58px;height:32px;border-radius:100px;background:var(--grad);border:none;cursor:pointer;
+  position:relative;padding:0;box-shadow:inset 0 2px 6px rgba(0,0,0,.14);
+}
+.switch i{
+  position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;
+  transition:transform .3s var(--ease);box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+.switch.yearly i{transform:translateX(26px)}
+.save-tag{
+  background:var(--green-soft);color:#0a7a46;font-family:var(--font-head);font-weight:700;
+  font-size:.76rem;padding:5px 11px;border-radius:100px;border:1px solid #bfe9d4;
+}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch}
+.plan{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:34px 30px;display:flex;flex-direction:column;position:relative;
+  transition:all .35s var(--ease);
+}
+.plan:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.plan.featured{
+  border:2px solid transparent;background:
+    linear-gradient(#fff,#fff) padding-box,var(--grad) border-box;
+  box-shadow:var(--shadow-lg);
+}
+.plan.featured:hover{transform:translateY(-10px)}
+.plan-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--grad);color:#fff;font-family:var(--font-head);font-weight:700;
+  font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 16px;border-radius:100px;box-shadow:0 8px 18px var(--purple-glow);white-space:nowrap;
+}
+.plan h3{font-size:1.25rem;margin-bottom:6px}
+.plan-desc{font-size:.9rem;margin-bottom:22px;min-height:44px}
+.plan-price{display:flex;align-items:flex-start;gap:4px;margin-bottom:4px}
+.plan-price .cur{font-family:var(--font-head);font-weight:700;font-size:1.2rem;color:var(--ink);margin-top:8px}
+.plan-price .amt{font-family:var(--font-head);font-weight:800;font-size:3rem;color:var(--ink);letter-spacing:-.04em;line-height:1}
+.plan-price .per{align-self:flex-end;font-size:.88rem;color:var(--muted);margin-bottom:6px}
+.plan-billed{font-size:.82rem;color:var(--muted);min-height:22px;margin-bottom:24px}
+.plan .btn{width:100%;margin-bottom:26px}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:.92rem}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;color:var(--ink-2)}
+.plan-features svg{flex-shrink:0;margin-top:3px}
+.plan-note{text-align:center;margin-top:36px;font-size:.9rem;color:var(--muted)}
+
+/* ============ COMPARISON ============ */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-lg);background:#fff;box-shadow:var(--shadow-sm)}
+.compare{width:100%;min-width:680px;border-collapse:collapse;font-size:.93rem}
+.compare th,.compare td{padding:16px 22px;text-align:center;border-bottom:1px solid var(--line)}
+.compare thead th{
+  font-family:var(--font-head);font-weight:800;color:var(--ink);font-size:.98rem;
+  background:var(--bg-soft);position:sticky;top:0;
+}
+.compare thead th:first-child{text-align:left}
+.compare td:first-child{text-align:left;font-weight:600;color:var(--ink-2)}
+.compare tbody tr{transition:background .25s}
+.compare tbody tr:hover{background:var(--purple-050)}
+.compare tbody tr:last-child td{border-bottom:none}
+.compare .hl{background:rgba(139,92,246,.05)}
+.check{color:var(--green)}
+.cross{color:#d3cfdc}
+
+/* ============ REVIEWS ============ */
+.reviews-viewport{overflow:hidden;border-radius:var(--radius-lg)}
+.reviews-track{display:flex;transition:transform .6s var(--ease)}
+.review-slide{min-width:100%;padding:6px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:30px 28px;display:flex;flex-direction:column;gap:16px;height:100%;
+  transition:all .3s var(--ease);
+}
+.review-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--purple-200)}
+.stars{display:flex;gap:3px}
+.review-card blockquote{font-size:.96rem;color:var(--ink-2);line-height:1.7;flex:1}
+.review-author{display:flex;align-items:center;gap:13px;padding-top:6px;border-top:1px solid var(--line)}
+.avatar{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  font-family:var(--font-head);font-weight:800;color:#fff;font-size:.95rem;
+}
+.review-author strong{display:block;font-family:var(--font-head);font-size:.95rem;color:var(--ink)}
+.review-author span{font-size:.8rem;color:var(--muted)}
+.slider-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:36px}
+.slider-btn{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;
+  cursor:pointer;display:grid;place-items:center;transition:all .25s var(--ease);
+}
+.slider-btn:hover{border-color:var(--purple);background:var(--purple-050);transform:scale(1.08)}
+.slider-dots{display:flex;gap:8px}
+.slider-dots button{
+  width:8px;height:8px;border-radius:100px;border:none;background:var(--purple-200);
+  cursor:pointer;transition:all .3s var(--ease);padding:0;
+}
+.slider-dots button.active{width:26px;background:var(--grad)}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:all .3s var(--ease)}
+.faq-item.open{border-color:var(--purple-200);box-shadow:var(--shadow-md)}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+  background:none;border:none;cursor:pointer;text-align:left;
+  padding:22px 26px;font-family:var(--font-head);font-weight:700;font-size:1.02rem;color:var(--ink);
+}
+.faq-icon{
+  width:30px;height:30px;border-radius:50%;background:var(--purple-050);flex-shrink:0;
+  display:grid;place-items:center;transition:all .3s var(--ease);
+}
+.faq-item.open .faq-icon{background:var(--grad);transform:rotate(45deg)}
+.faq-item.open .faq-icon svg line{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a p{padding:0 26px 24px;font-size:.95rem}
+
+/* ============ CTA ============ */
+.cta-band{
+  background:var(--grad);border-radius:28px;padding:70px 56px;text-align:center;
+  position:relative;overflow:hidden;color:#fff;
+}
+.cta-band::before,.cta-band::after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+}
+.cta-band::before{width:420px;height:420px;background:rgba(255,255,255,.09);top:-190px;left:-120px}
+.cta-band::after{width:340px;height:340px;background:rgba(255,255,255,.07);bottom:-170px;right:-90px}
+.cta-band h2{color:#fff;font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:14px;position:relative}
+.cta-band p{color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 30px;position:relative;font-size:1.05rem}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative}
+
+/* ============ FOOTER ============ */
+.footer{background:#120e1c;color:#a49fb8;padding:80px 0 34px;font-size:.92rem}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px}
+.footer-brand .logo{color:#fff;margin-bottom:16px}
+.footer-brand p{max-width:290px;margin-bottom:22px;line-height:1.7}
+.socials{display:flex;gap:10px}
+.socials a{
+  width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);
+  display:grid;place-items:center;transition:all .25s var(--ease);
+}
+.socials a:hover{background:var(--purple);transform:translateY(-3px)}
+.footer h4{color:#fff;font-size:.95rem;margin-bottom:18px;letter-spacing:0}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer ul a{transition:all .25s}
+.footer ul a:hover{color:#fff;padding-left:4px}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:28px;
+  display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+}
+.footer-bottom p{font-size:.86rem}
+.pay-badges{display:flex;flex-wrap:wrap;gap:8px}
+.pay-badges span{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+  padding:5px 12px;border-radius:7px;font-family:var(--font-head);font-weight:700;
+  font-size:.74rem;color:#cfcadf;letter-spacing:.04em;
+}
+
+/* ============ REVEAL ANIMATIONS ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+.reveal-d4{transition-delay:.32s}
+.reveal-d5{transition-delay:.4s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-sub{max-width:none}
+  .hero-visual{max-width:520px;margin:0 auto;width:100%}
+  .features-grid,.plans,.reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .plan.featured{order:-1}
+  .footer-grid{grid-template-columns:1fr 1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media (max-width:768px){
+  .section{padding:76px 0}
+  .nav-links,.nav-actions{display:none}
+  .burger{display:block}
+  .stats{grid-template-columns:repeat(2,1fr);gap:32px 16px}
+  .features-grid,.plans,.reviews-grid{grid-template-columns:1fr}
+  .hero{padding-top:calc(var(--nav-h) + 52px)}
+  .hero-cta .btn{flex:1}
+  .domain-row{flex-direction:column}
+  .domain-row .btn{width:100%}
+  .chip-1{top:-16px;left:-6px}
+  .chip-2{bottom:-16px;right:-6px}
+  .cta-band{padding:52px 26px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .faq-q{padding:18px 20px;font-size:.96rem}
+  .faq-a p{padding:0 20px 20px}
+}
+@media (max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+  .container{padding:0 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Hoster home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><path d="M16 16h8v12h16V16h8v32h-8V32H24v16h-8z" fill="#fff"/></svg>
+      </span>
+      Hoster
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#compare">Compare</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="#pricing" class="btn btn-ghost">Sign in</a>
+      <a href="#pricing" class="btn btn-primary">Get started</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features">Features</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#compare">Compare</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#faq">FAQ</a>
+  <a href="#pricing" class="btn btn-ghost">Sign in</a>
+  <a href="#pricing" class="btn btn-primary">Get started</a>
+</div>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow reveal">🚀 New — Hoster Cloud v3 is live</span>
+      <h1 class="reveal reveal-d1">Hosting that makes your website feel <span class="grad-text">effortless</span></h1>
+      <p class="hero-sub reveal reveal-d2">Blazing-fast servers, a free domain and SSL, and humans who answer in under two minutes. Launch today — scale whenever you're ready.</p>
+
+      <div class="domain-search reveal reveal-d3" role="search">
+        <form class="domain-row" id="domainForm">
+          <input class="domain-input" id="domainInput" type="text" placeholder="Find your perfect domain name…" aria-label="Domain name" autocomplete="off" spellcheck="false">
+          <button type="submit" class="btn btn-primary">Search domain</button>
+        </form>
+        <div class="domain-results" id="domainResults" aria-live="polite"></div>
+      </div>
+
+      <ul class="hero-trust reveal reveal-d4">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free domain for 1 year</li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 30-day money-back</li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free SSL forever</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual reveal reveal-d2">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="blob-2" aria-hidden="true"></div>
+      <div class="float-chip chip-1">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z" fill="#6c3ce9"/></svg>
+        <div>0.3s load<small>Global edge network</small></div>
+      </div>
+      <div class="float-chip chip-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6z" fill="#12b76a"/><path d="m9 12 2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>SSL active<small>Auto-renewing</small></div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-top">
+          <div class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="dash-label">hoster · server monitor</span>
+        </div>
+        <div class="dash-metric">
+          <div class="dash-metric-head"><strong>Server performance</strong><span>+12% this week</span></div>
+          <div class="bar"><i data-bar="92"></i></div>
+        </div>
+        <div class="dash-metric">
+          <div class="dash-metric-head"><strong>Storage used</strong><span style="color:var(--muted)">18.4 GB of 100 GB</span></div>
+          <div class="bar"><i data-bar="18"></i></div>
+        </div>
+        <div class="dash-chart" aria-hidden="true">
+          <i data-h="35"></i><i data-h="52"></i><i data-h="41"></i><i data-h="68"></i>
+          <i data-h="55"></i><i data-h="80"></i><i data-h="62"></i><i data-h="94"></i>
+          <i data-h="71"></i><i data-h="86"></i><i data-h="58"></i><i data-h="100"></i>
+        </div>
+        <div class="dash-live"><span class="pulse" aria-hidden="true"></span> All systems operational · 99.99% uptime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOGOS ================= -->
+<section class="logos" aria-label="Trusted by">
+  <div class="container logos-row reveal">
+    <span>Northwind</span><span>Lumière</span><span>Orbital</span>
+    <span>Kindred&nbsp;Co.</span><span>Studio&nbsp;Fable</span><span>Basecamp&nbsp;9</span>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="section">
+  <div class="container stats">
+    <div class="stat reveal"><strong><span data-count="140">0</span>K+</strong><span>Websites hosted</span></div>
+    <div class="stat reveal reveal-d1"><strong><span data-count="99.9" data-decimals="1">0</span>%</strong><span>Uptime guarantee</span></div>
+    <div class="stat reveal reveal-d2"><strong><span data-count="42">0</span>ms</strong><span>Avg. response time</span></div>
+    <div class="stat reveal reveal-d3"><strong><span data-count="24">0</span>/7</strong><span>Human support</span></div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section section--soft" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Hoster</span>
+      <h2>Everything you need. <span class="grad-text">Nothing you don't.</span></h2>
+      <p>A hosting stack that stays out of your way — powerful under the hood, delightful on the surface.</p>
+    </div>
+    <div class="features-grid">
+      <article class="feature-card reveal">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z" stroke="#6c3ce9" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Lightning performance</h3>
+        <p>NVMe SSD storage, built-in LiteSpeed caching and a global CDN put your pages in front of visitors in milliseconds.</p>
+      </article>
+      <article class="feature-card reveal reveal-d1">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.4 2.9 7.9 7 9 4.1-1.1 7-4.6 7-9V6z" stroke="#6c3ce9" stroke-width="2" stroke-linejoin="round"/><path d="m9.5 12 1.8 1.8 3.7-3.7" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Security by default</h3>
+        <p>Free SSL certificates, an AI-powered web application firewall, DDoS protection and daily malware scans — on every plan.</p>
+      </article>
+      <article class="feature-card reveal reveal-d2">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2.5" stroke="#6c3ce9" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>1-click WordPress</h3>
+        <p>Install WordPress, WooCommerce or 400+ apps in seconds. Automatic core updates keep everything current without lifting a finger.</p>
+      </article>
+      <article class="feature-card reveal">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 1-9-9" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round"/><path d="M12 7v5l3.5 2" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Automatic backups</h3>
+        <p>Daily snapshots retained for 30 days, with one-click restore. Accidents happen — recovering shouldn't ruin your day.</p>
+      </article>
+      <article class="feature-card reveal reveal-d1">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20v-5a8 8 0 0 1 16 0v5" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round"/><path d="M4 17h3v4H4zM17 17h3v4h-3z" stroke="#6c3ce9" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Support that cares</h3>
+        <p>Real engineers, not scripts. Average first response under 2 minutes, 24/7/365, in English and 12 other languages.</p>
+      </article>
+      <article class="feature-card reveal reveal-d2">
+        <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 17 10 9l4 5 3-4 3 7z" stroke="#6c3ce9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="#6c3ce9" stroke-width="2"/></svg></div>
+        <h3>Real-time analytics</h3>
+        <p>Traffic, uptime and Core Web Vitals in a clean dashboard. No plugins, no third-party scripts slowing you down.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Simple plans that <span class="grad-text">grow with you</span></h2>
+      <p>Transparent pricing, no renewal traps. Switch or cancel anytime — we'll even prorate it for you.</p>
+    </div>
+
+    <div class="billing-toggle reveal">
+      <span id="labelMonthly" class="active">Monthly</span>
+      <button class="switch" id="billingSwitch" role="switch" aria-checked="false" aria-label="Toggle yearly billing"><i></i></button>
+      <span id="labelYearly">Yearly</span>
+      <span class="save-tag">Save up to 35%</span>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <h3>Starter</h3>
+        <p class="plan-desc">Perfect for a personal site, portfolio or first project.</p>
+        <div class="plan-price"><span class="cur">$</span><span class="amt" data-monthly="4.99" data-yearly="2.99">4.99</span><span class="per">/mo</span></div>
+        <p class="plan-billed" data-billed-monthly="Billed monthly · cancel anytime" data-billed-yearly="Billed $35.88/yr · save 40%">Billed monthly · cancel anytime</p>
+        <a href="#" class="btn btn-ghost">Choose Starter</a>
+        <ul class="plan-features">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 website</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 25 GB NVMe storage</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free SSL certificate</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 mailbox included</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Weekly backups</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 24/7 chat support</li>
+        </ul>
+      </article>
+
+      <article class="plan featured reveal reveal-d1">
+        <span class="plan-badge">Most popular</span>
+        <h3>Business</h3>
+        <p class="plan-desc">For growing brands, shops and content sites that need room.</p>
+        <div class="plan-price"><span class="cur">$</span><span class="amt" data-monthly="9.99" data-yearly="5.99">9.99</span><span class="per">/mo</span></div>
+        <p class="plan-billed" data-billed-monthly="Billed monthly · cancel anytime" data-billed-yearly="Billed $71.88/yr · save 40%">Billed monthly · cancel anytime</p>
+        <a href="#" class="btn btn-primary">Choose Business</a>
+        <ul class="plan-features">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>100 websites</strong></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 100 GB NVMe storage</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> <strong>Free domain</strong> (1 year)</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free CDN + daily backups</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited mailboxes</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Staging environment</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority support</li>
+        </ul>
+      </article>
+
+      <article class="plan reveal reveal-d2">
+        <h3>Cloud Pro</h3>
+        <p class="plan-desc">Dedicated resources and auto-scaling for serious traffic.</p>
+        <div class="plan-price"><span class="cur">$</span><span class="amt" data-monthly="18.99" data-yearly="12.99">18.99</span><span class="per">/mo</span></div>
+        <p class="plan-billed" data-billed-monthly="Billed monthly · cancel anytime" data-billed-yearly="Billed $155.88/yr · save 32%">Billed monthly · cancel anytime</p>
+        <a href="#" class="btn btn-ghost">Choose Cloud Pro</a>
+        <ul class="plan-features">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited websites</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 200 GB NVMe storage</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 GB RAM · 2 CPU cores</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Auto-scaling infrastructure</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Hourly backups</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Dedicated IP address</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#12b76a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> White-glove migration</li>
+        </ul>
+      </article>
+    </div>
+    <p class="plan-note reveal">All plans include a 30-day money-back guarantee. Prices in USD, taxes calculated at checkout.</p>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section class="section section--soft" id="compare">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Compare plans</span>
+      <h2>Find your <span class="grad-text">perfect fit</span></h2>
+      <p>A side-by-side look at what each plan includes — no asterisks, no fine print.</p>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare">
+        <thead>
+          <tr><th scope="col">Feature</th><th scope="col">Starter</th><th scope="col" class="hl">Business</th><th scope="col">Cloud Pro</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Websites</td><td>1</td><td class="hl">100</td><td>Unlimited</td></tr>
+          <tr><td>NVMe storage</td><td>25 GB</td><td class="hl">100 GB</td><td>200 GB</td></tr>
+          <tr><td>Monthly visits</td><td>~10K</td><td class="hl">~100K</td><td>~1M</td></tr>
+          <tr><td>Free domain</td><td><span class="cross" aria-label="Not included">✕</span></td><td class="hl"><span class="check" aria-label="Included">✓</span></td><td><span class="check" aria-label="Included">✓</span></td></tr>
+          <tr><td>Free SSL certificate</td><td><span class="check" aria-label="Included">✓</span></td><td class="hl"><span class="check" aria-label="Included">✓</span></td><td><span class="check" aria-label="Included">✓</span></td></tr>
+          <tr><td>Global CDN</td><td><span class="cross" aria-label="Not included">✕</span></td><td class="hl"><span class="check" aria-label="Included">✓</span></td><td><span class="check" aria-label="Included">✓</span></td></tr>
+          <tr><td>Backups</td><td>Weekly</td><td class="hl">Daily</td><td>Hourly</td></tr>
+          <tr><td>Email accounts</td><td>1</td><td class="hl">Unlimited</td><td>Unlimited</td></tr>
+          <tr><td>Staging environment</td><td><span class="cross" aria-label="Not included">✕</span></td><td class="hl"><span class="check" aria-label="Included">✓</span></td><td><span class="check" aria-label="Included">✓</span></td></tr>
+          <tr><td>Dedicated IP</td><td><span class="cross" aria-label="Not included">✕</span></td><td class="hl"><span class="cross" aria-label="Not included">✕</span></td><td><span class="check" aria-label="Included">✓</span></td></tr>
+          <tr><td>Support</td><td>24/7 chat</td><td class="hl">Priority</td><td>Priority + phone</td></tr>
+          <tr><td>Uptime SLA</td><td>99.9%</td><td class="hl">99.9%</td><td>99.99%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Loved by creators</span>
+      <h2>Don't take our word <span class="grad-text">for it</span></h2>
+      <p>Rated 4.9/5 from 12,400+ reviews across the web.</p>
+    </div>
+    <div class="reviews-viewport reveal" id="reviewsViewport">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-slide">
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"We moved 40 client sites to Hoster in a weekend. Every single one got faster, and their team handled the migrations for free. Genuinely rare support."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#5626d4)">AM</div>
+                <div><strong>Aisha Mensah</strong><span>Founder, Kindred Studio</span></div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"My store's LCP went from 4.2s to 0.9s the day we switched. Black Friday came and went without a single hiccup — that's the whole review."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#f472b6,#be185d)">TK</div>
+                <div><strong>Tomás Keller</strong><span>Owner, Lumière Goods</span></div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"The dashboard is beautiful and I don't say that often. Staging, backups and SSL all just work. I finally stopped thinking about hosting."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#38bdf8,#0369a1)">RP</div>
+                <div><strong>Ravi Patel</strong><span>Developer, Orbital Labs</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="review-slide">
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"I'm not technical at all. Hoster's setup wizard had my portfolio live in about eight minutes, and chat support walked me through DNS like a patient friend."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#34d399,#047857)">SL</div>
+                <div><strong>Sofia Lindqvist</strong><span>Photographer & creator</span></div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"Pricing is honest. What I signed up for is what I still pay two years later. After the renewal traps we hit elsewhere, that alone earned our loyalty."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#fbbf24,#b45309)">JO</div>
+                <div><strong>James Okafor</strong><span>CTO, Basecamp 9</span></div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 out of 5 stars">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#f59e0b"><path d="m12 2 3 6.6 7.2.9-5.3 4.9 1.4 7.1L12 18l-6.3 3.5 1.4-7.1L1.8 9.5 9 8.6z"/></svg>
+              </div>
+              <blockquote>"Support replied in 40 seconds at 2 a.m. and fixed my misconfigured redirect on the first try. That kind of reliability is worth every cent."</blockquote>
+              <div class="review-author">
+                <div class="avatar" style="background:linear-gradient(135deg,#a78bfa,#6d28d9)">MC</div>
+                <div><strong>Mei Chen</strong><span>Editor, Northwind Media</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-nav reveal">
+      <button class="slider-btn" id="prevReview" aria-label="Previous reviews">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m14 6-6 6 6 6" stroke="#16121f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="slider-dots" id="reviewDots" role="tablist" aria-label="Review pages"></div>
+      <button class="slider-btn" id="nextReview" aria-label="Next reviews">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m10 6 6 6-6 6" stroke="#16121f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section--soft" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions? <span class="grad-text">Answered.</span></h2>
+      <p>Everything you might want to know before you launch. Still curious? Chat with us anytime.</p>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I migrate my existing website to Hoster?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Absolutely — and it's free. Our migration specialists handle the entire move for you with zero downtime, typically within 24 hours. Cloud Pro customers get a dedicated migration manager.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What happens when my promotional price ends?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Your plan renews at the standard rate shown at checkout — no surprise multipliers. We email you 30 days before renewal, and you can downgrade, switch billing cycles or cancel from your dashboard in one click.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you offer a money-back guarantee?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Yes — every plan comes with a no-questions-asked 30-day money-back guarantee. If Hoster isn't right for you, request a refund from your dashboard and we'll process it within 3 business days.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is a domain name included?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Business and Cloud Pro plans include a free domain registration for the first year (300+ TLDs supported). Starter users can register a domain through Hoster at standard prices, or bring one they already own.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How secure is my site on Hoster?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Every site gets a free auto-renewing SSL certificate, an AI-trained web application firewall, DDoS mitigation at the network edge, isolated accounts, and continuous malware scanning — all included at no extra cost.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I upgrade my plan later?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Anytime, in one click, with instant activation. We prorate the remainder of your current cycle so you only pay the difference — and downgrades take effect at your next renewal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you support WordPress and eCommerce?<span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="#6c3ce9" stroke-width="2.4" stroke-linecap="round"/></svg></span></button>
+        <div class="faq-a"><p>Yes. One-click installs for WordPress, WooCommerce, PrestaShop and 400+ other apps. Business and above include object caching and staging environments tuned specifically for WooCommerce stores.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Ready to launch something great?</h2>
+      <p>Join 140,000+ site owners who chose hosting they never have to think about again. Set up takes about three minutes.</p>
+      <div class="cta-actions">
+        <a href="#pricing" class="btn btn-light btn-lg">Start your site</a>
+        <a href="#faq" class="btn btn-outline-light btn-lg">Talk to us first</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="Hoster home">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><path d="M16 16h8v12h16V16h8v32h-8V32H24v16h-8z" fill="#fff"/></svg>
+          </span>
+          Hoster
+        </a>
+        <p>Premium web hosting made beautifully simple. Fast, secure and backed by humans who actually care.</p>
+        <div class="socials">
+          <a href="#" aria-label="Hoster on X"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M18.2 2H21l-6.6 7.6L22 22h-6.3l-4.9-6.4L5.1 22H2.3l7-8.1L2 2h6.4l4.4 5.9zm-1 18h1.7L7 3.9H5.2z"/></svg></a>
+          <a href="#" aria-label="Hoster on GitHub"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="#" aria-label="Hoster on YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.4-.4-5c-.3-.9-1-1.6-1.9-1.8C19 4.7 12 4.7 12 4.7s-7 0-8.7.5c-.9.2-1.6.9-1.9 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.3.9 1 1.6 1.9 1.8 1.7.5 8.7.5 8.7.5s7 0 8.7-.5c.9-.2 1.6-.9 1.9-1.8.4-1.6.4-5 .4-5zM9.8 15.3V8.7l5.8 3.3z"/></svg></a>
+          <a href="#" aria-label="Hoster on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.5 4.7 5.9V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Hosting</h4>
+        <ul>
+          <li><a href="#pricing">Web hosting</a></li>
+          <li><a href="#pricing">WordPress hosting</a></li>
+          <li><a href="#pricing">Cloud hosting</a></li>
+          <li><a href="#pricing">WooCommerce hosting</a></li>
+          <li><a href="#compare">Compare plans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Domains</h4>
+        <ul>
+          <li><a href="#">Domain search</a></li>
+          <li><a href="#">Domain transfer</a></li>
+          <li><a href="#">WHOIS lookup</a></li>
+          <li><a href="#">Free subdomains</a></li>
+          <li><a href="#">Premium domains</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Hoster</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Affiliate program</a></li>
+          <li><a href="#">Press kit</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">System status</a></li>
+          <li><a href="#">Report abuse</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> Hoster Technologies. All rights reserved. · <a href="#" style="text-decoration:underline">Privacy</a> · <a href="#" style="text-decoration:underline">Terms</a></p>
+      <div class="pay-badges" aria-label="Accepted payment methods">
+        <span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>PAYPAL</span><span>APPLE PAY</span><span>GOOGLE PAY</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Header + scroll progress ---------- */
+  var header = document.getElementById("header");
+  var progress = document.getElementById("scrollProgress");
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle("scrolled", y > 8);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById("burger");
+  var menu = document.getElementById("mobileMenu");
+  burger.addEventListener("click", function(){
+    var open = document.body.classList.toggle("menu-open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  menu.addEventListener("click", function(e){
+    if (e.target.tagName === "A"){
+      document.body.classList.remove("menu-open");
+      document.body.style.overflow = "";
+      burger.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduced){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("visible"); ro.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    revealEls.forEach(function(el){ ro.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("visible"); });
+  }
+
+  /* ---------- Count-up stats ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute("data-count"));
+    var decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+    if (reduced){ el.textContent = target.toFixed(decimals); return; }
+    var start = null, dur = 1600;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(decimals);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window){
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ animateCount(en.target); co.unobserve(en.target); }
+      });
+    }, {threshold:.5});
+    counters.forEach(function(el){ co.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* ---------- Hero dashboard animations ---------- */
+  function animateDashboard(){
+    document.querySelectorAll("[data-bar]").forEach(function(b){ b.style.width = b.getAttribute("data-bar") + "%"; });
+    document.querySelectorAll("[data-h]").forEach(function(b){ b.style.height = b.getAttribute("data-h") + "%"; });
+  }
+  if ("IntersectionObserver" in window){
+    var dash = document.querySelector(".dash-card");
+    if (dash){
+      var dio = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting){ animateDashboard(); dio.disconnect(); }
+      }, {threshold:.35});
+      dio.observe(dash);
+    }
+  } else { animateDashboard(); }
+
+  /* ---------- Domain search (demo) ---------- */
+  var form = document.getElementById("domainForm");
+  var input = document.getElementById("domainInput");
+  var results = document.getElementById("domainResults");
+  var tlds = [
+    {tld:".com", price:"$9.99/yr"},
+    {tld:".io",  price:"$34.99/yr"},
+    {tld:".net", price:"$12.99/yr"},
+    {tld:".dev", price:"$14.99/yr"}
+  ];
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = input.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, "");
+    if (!name){ input.focus(); return; }
+    results.classList.add("open");
+    results.innerHTML = '<div class="domain-checking"><span class="spinner" aria-hidden="true"></span> Checking availability for “' + name + '”…</div>';
+    setTimeout(function(){
+      var html = "";
+      tlds.forEach(function(item, i){
+        var full = name + item.tld;
+        // deterministic pseudo-availability so results stay consistent per name
+        var hash = 0;
+        for (var k = 0; k < full.length; k++) hash = (hash * 31 + full.charCodeAt(k)) >>> 0;
+        var available = (hash % 5) !== 0;
+        html += '<div class="domain-result ' + (available ? "available" : "taken") + '">' +
+          '<span class="domain-name">' + full + '</span>' +
+          '<span class="domain-status">' +
+            (available
+              ? '<span class="badge-avail">Available</span><span class="domain-price">' + item.price + '</span><a href="#pricing" class="btn btn-primary" style="padding:8px 16px;font-size:.82rem">Claim</a>'
+              : '<span class="badge-taken">Taken</span>') +
+          '</span></div>';
+      });
+      results.innerHTML = html;
+    }, reduced ? 0 : 800);
+  });
+  input.addEventListener("input", function(){
+    if (results.classList.contains("open") && !input.value.trim()){
+      results.classList.remove("open");
+      results.innerHTML = "";
+    }
+  });
+
+  /* ---------- Billing toggle ---------- */
+  var sw = document.getElementById("billingSwitch");
+  var lm = document.getElementById("labelMonthly");
+  var ly = document.getElementById("labelYearly");
+  sw.addEventListener("click", function(){
+    var yearly = !sw.classList.contains("yearly");
+    sw.classList.toggle("yearly", yearly);
+    sw.setAttribute("aria-checked", yearly ? "true" : "false");
+    lm.classList.toggle("active", !yearly);
+    ly.classList.toggle("active", yearly);
+    document.querySelectorAll(".amt").forEach(function(el){
+      var val = yearly ? el.getAttribute("data-yearly") : el.getAttribute("data-monthly");
+      el.style.transition = "opacity .18s";
+      el.style.opacity = "0";
+      setTimeout(function(){ el.textContent = val; el.style.opacity = "1"; }, reduced ? 0 : 180);
+    });
+    document.querySelectorAll(".plan-billed").forEach(function(el){
+      el.textContent = yearly ? el.getAttribute("data-billed-yearly") : el.getAttribute("data-billed-monthly");
+    });
+  });
+
+  /* ---------- Reviews slider ---------- */
+  var track = document.getElementById("reviewsTrack");
+  var slides = track ? track.children.length : 0;
+  var dotsWrap = document.getElementById("reviewDots");
+  var idx = 0, timer = null;
+  function buildDots(){
+    for (var i = 0; i < slides; i++){
+      var b = document.createElement("button");
+      b.setAttribute("aria-label", "Go to review page " + (i + 1));
+      b.addEventListener("click", (function(n){ return function(){ go(n); restart(); }; })(i));
+      dotsWrap.appendChild(b);
+    }
+  }
+  function go(n){
+    idx = (n + slides) % slides;
+    track.style.transform = "translateX(-" + (idx * 100) + "%)";
+    Array.prototype.forEach.call(dotsWrap.children, function(d, i){
+      d.classList.toggle("active", i === idx);
+    });
+  }
+  function restart(){
+    if (timer) clearInterval(timer);
+    if (!reduced) timer = setInterval(function(){ go(idx + 1); }, 6000);
+  }
+  if (track && slides > 1){
+    buildDots(); go(0); restart();
+    document.getElementById("prevReview").addEventListener("click", function(){ go(idx - 1); restart(); });
+    document.getElementById("nextReview").addEventListener("click", function(){ go(idx + 1); restart(); });
+    var vp = document.getElementById("reviewsViewport");
+    vp.addEventListener("mouseenter", function(){ if (timer) clearInterval(timer); });
+    vp.addEventListener("mouseleave", restart);
+    // touch swipe
+    var sx = 0;
+    vp.addEventListener("touchstart", function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    vp.addEventListener("touchend", function(e){
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 45){ go(dx < 0 ? idx + 1 : idx - 1); restart(); }
+    }, {passive:true});
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var btn = item.querySelector(".faq-q");
+    var panel = item.querySelector(".faq-a");
+    btn.addEventListener("click", function(){
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(function(other){
+        other.classList.remove("open");
+        other.querySelector(".faq-a").style.maxHeight = null;
+        other.querySelector(".faq-q").setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen){
+        item.classList.add("open");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  /* ---------- Footer year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
